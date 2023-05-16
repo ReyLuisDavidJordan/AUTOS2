@@ -4,6 +4,7 @@ import static java.lang.Thread.sleep;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import pistacarros.FrmCronometro;
 import pistacarros.Podio;
 import pistacarros.frmPista;
 
@@ -16,9 +17,9 @@ public class Carrera implements Runnable {
    private ArrayList<Auto> puestos = new ArrayList<>();
    private ArrayList<Auto> participantes;
    private frmPista pista;
-   private Cronometro cronometro;
+   private FrmCronometro cronometro;
    
-   public Carrera(ArrayList<Auto> participantes, frmPista pista, Cronometro cronometro) {
+    public Carrera(ArrayList<Auto> participantes, frmPista pista, FrmCronometro cronometro) {
        this.participantes = participantes;
        this.pista = pista;
        this.cronometro = cronometro;
@@ -41,7 +42,9 @@ public class Carrera implements Runnable {
             } else {
                 //      cronometro.detenerCronometro();
                 try {
+                    cronometro.mTimer.stop();
                     sleep(1000);
+                    cronometro.setVisible(false);
                     pista.dispose();
                     new Podio(puestos).setVisible(true);
                     break;

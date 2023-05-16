@@ -20,7 +20,7 @@ public class Auto extends Thread{
         this.start();
     }
 
-    @Override
+    @Override 
     public void run() {
         setPosicion(0);
         while(true) {
@@ -28,9 +28,9 @@ public class Auto extends Thread{
                 sleep((int) (Math.random() * 1000));
                 setPosicion(getVehiculo().getLocation().x);
                 
-                if (getPosicion() < 1235) {
+                if (getPosicion() < 1340) {
                     getVehiculo().setLocation(getVehiculo().getLocation().x + 40, getVehiculo().getLocation().y);
-                    frmPista.pnlPista.repaint();
+                    frmPista.pnlPista.repaint(); // Repintar el Frame
                 } else {
                     break;
                 }
